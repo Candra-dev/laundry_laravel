@@ -29,7 +29,7 @@ class PelangganController extends Controller
     public function create()
     {
         return view('customer.create', [
-            'title' => 'New Pelanggan',
+            'title' => 'Form Pelanggan',
             'pelanggans' => Pelanggan::paginate(10)
         ]);
     }

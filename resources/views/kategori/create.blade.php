@@ -8,35 +8,43 @@
 
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('customer.store') }}" method="post">
+            <form action="{{ route('kategori.store') }}" method="post">
                 @csrf
 
                 <div class="form-group">
-                  <label for="nama">Nama Lengkap</label>
-                  <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" id="nama" placeholder="Nama" autocomplete="off" value="{{ old('nama') }}">
-                  @error('nama')
+                  <label for="nama">Kategori</label>
+                  <input type="text" class="form-control @error('kategori') is-invalid @enderror" name="kategori" id="kategori" placeholder="Kategori" autocomplete="off" value="{{ old('kategori') }}">
+                  @error('Kategori')
                     <span class="text-danger">{{ $message }}</span>
                   @enderror
                 </div>
 
                 <div class="form-group">
-                  <label for="alamat">Alamat</label>
-                  <input type="text" class="form-control @error('alamat') is-invalid @enderror" name="alamat" id="alamat" placeholder="Alamat" autocomplete="off" value="{{ old('alamat') }}">
-                  @error('alamat')
+                  <label for="berat">Minimal Berat</label>
+                  <input type="number" class="form-control @error('berat') is-invalid @enderror" name="berat" id="berat" placeholder="Berat" value="{{ old('berat') }}">
+                  @error('berat')
                     <span class="text-danger">{{ $message }}</span>
                   @enderror
                 </div>
 
                 <div class="form-group">
-                  <label for="no_telp">Telpon</label>
-                  <input type="number" class="form-control @error('no_telp') is-invalid @enderror" name="no_telp" id="no_telp" placeholder="no_telp" autocomplete="off" value="{{ old('no_telp') }}">
-                  @error('no_telp')
+                  <label for="hari">Lama Hari</label>
+                  <input type="number" class="form-control @error('hari') is-invalid @enderror" name="hari" id="hari" placeholder="Lama Hari" autocomplete="off" value="{{ old('hari') }}">
+                  @error('hari')
+                    <span class="text-danger">{{ $message }}</span>
+                  @enderror
+                </div>
+
+                <div class="form-group">
+                  <label for="harga">Harga/kg</label>
+                  <input type="number" class="form-control @error('harga') is-invalid @enderror" name="harga" id="harga" placeholder="Harga/kg" autocomplete="off" value="{{ old('harga') }}">
+                  @error('harga')
                     <span class="text-danger">{{ $message }}</span>
                   @enderror
                 </div>
 
                 <button type="submit" class="btn btn-primary">Save</button>
-                <a href="{{ route('customer.index') }}" class="btn btn-default">Back to list</a>
+                <a href="{{ route('kategori.index') }}" class="btn btn-default">Back to list</a>
 
             </form>
         </div>

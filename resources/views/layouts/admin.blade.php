@@ -78,8 +78,8 @@
             <!-- Nav Item - Produk -->
             <li class="nav-item {{ Nav::isRoute('produk') }}">
                 <a class="nav-link" href="{{ route('produk') }}">
-                    <i class="fas fa-fw fa-box"></i>
-                    <span>{{ __('Produk') }}</span>
+                    <i class="fas fa-fw fa-list"></i>
+                    <span>{{ __('List Laundry') }}</span>
                 </a>
             </li>
 

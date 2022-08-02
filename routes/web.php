@@ -26,9 +26,8 @@ Route::get('/user', 'BasicController@index')->name('user');
 
 Route::get('/pelanggan', 'PelangganController@index')->name('pelanggan');
 
-Route::get('/produk', function () {
-    return view('produk');
-})->name('produk');
+
+Route::get('/produk', 'ProdukController@index')->name('produk');
 
 Route::get('/transaksi', function () {
     return view('transaksi');
@@ -44,4 +43,8 @@ Route::middleware('auth')->group(function() {
 
 Route::middleware('auth')->group(function() {
     Route::resource('customer', PelangganController::class);
+});
+
+Route::middleware('auth')->group(function() {
+    Route::resource('kategori', ProdukController::class);
 });

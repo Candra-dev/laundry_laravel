@@ -31,7 +31,7 @@ class BasicController extends Controller
     public function create()
     {
         return view('basic.create', [
-            'title' => 'New User',
+            'title' => 'Form User',
             'users' => User::paginate(10)
         ]);
     }
