@@ -22,13 +22,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/profile', 'ProfileController@index')->name('profile');
 Route::put('/profile', 'ProfileController@update')->name('profile.update');
 
-Route::get('/user', function () {
-    return view('user');
-})->name('user');
+Route::get('/user', 'BasicController@index')->name('user');
 
-Route::get('/pelanggan', function () {
-    return view('pelanggan');
-})->name('pelanggan');
+Route::get('/pelanggan', 'PelangganController@index')->name('pelanggan');
 
 Route::get('/produk', function () {
     return view('produk');
@@ -44,4 +40,8 @@ Route::get('/laporan', function () {
 
 Route::middleware('auth')->group(function() {
     Route::resource('basic', BasicController::class);
+});
+
+Route::middleware('auth')->group(function() {
+    Route::resource('customer', PelangganController::class);
 });

@@ -8,43 +8,36 @@
 
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('basic.store') }}" method="post">
+            <form action="{{ route('customer.update', $user->id) }}" method="post">
                 @csrf
+                @method('put')
 
                 <div class="form-group">
-                  <label for="name">Nama Depan</label>
-                  <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" placeholder="First name" autocomplete="off" value="{{ old('name') }}">
-                  @error('name')
+                  <label for="nama">Nama Lengkap</label>
+                  <input type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" id="nama" placeholder="Nama" autocomplete="off" value="{{ old('nama') ?? $user->nama }}">
+                  @error('nama')
                     <span class="text-danger">{{ $message }}</span>
                   @enderror
                 </div>
 
                 <div class="form-group">
-                  <label for="last_name">Nama Belakang</label>
-                  <input type="text" class="form-control @error('last_name') is-invalid @enderror" name="last_name" id="last_name" placeholder="Last name" autocomplete="off" value="{{ old('last_name') }}">
-                  @error('last_name')
+                  <label for="alamat">Alamat</label>
+                  <input type="text" class="form-control @error('alamat') is-invalid @enderror" name="alamat" id="alamat" placeholder="Alamat" autocomplete="off" value="{{ old('alamat') ?? $user->alamat }}">
+                  @error('alamat')
                     <span class="text-danger">{{ $message }}</span>
                   @enderror
                 </div>
 
                 <div class="form-group">
-                  <label for="email">Email</label>
-                  <input type="email" class="form-control @error('email') is-invalid @enderror" name="email" id="email" placeholder="Email" autocomplete="off" value="{{ old('email') }}">
-                  @error('email')
-                    <span class="text-danger">{{ $message }}</span>
-                  @enderror
-                </div>
-
-                <div class="form-group">
-                  <label for="password">Password</label>
-                  <input type="password" class="form-control @error('password') is-invalid @enderror" name="password" id="password" placeholder="Password" autocomplete="off">
-                  @error('password')
+                  <label for="no_telp">Telpon</label>
+                  <input type="no_telp" class="form-control @error('no_telp') is-invalid @enderror" name="no_telp" id="no_telp" placeholder="no_telp" autocomplete="off" value="{{ old('no_telp') ?? $user->no_telp }}">
+                  @error('no_telp')
                     <span class="text-danger">{{ $message }}</span>
                   @enderror
                 </div>
 
                 <button type="submit" class="btn btn-primary">Save</button>
-                <a href="{{ route('basic.index') }}" class="btn btn-default">Back to list</a>
+                <a href="{{ route('customer.index') }}" class="btn btn-default">Back to list</a>
 
             </form>
         </div>

@@ -18,7 +18,7 @@ class BasicController extends Controller
     public function index()
     {
         return view('basic.list', [
-            'title' => 'Basic CRUD',
+            'title' => 'User',
             'users' => User::paginate(10)
         ]);
     }
