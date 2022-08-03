@@ -22,7 +22,7 @@
 
                 <div class="form-group">
                   <label for="berat">Minimal Berat</label>
-                  <input type="number" class="form-control @error('berat') is-invalid @enderror" name="berat" id="berat" placeholder="Berat" value="{{ old('berat') ?? $produk->berat }}">
+                  <input type="number" class="form-control @error('berat') is-invalid @enderror" name="berat" id="berat" placeholder="Nama Pelanggan" value="{{ old('berat') ?? $produk->berat }}">
                   @error('berat')
                     <span class="text-danger">{{ $message }}</span>
                   @enderror

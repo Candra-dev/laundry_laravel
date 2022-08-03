@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Transaksi;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -24,6 +26,11 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $transaksi = DB::table('transaksi')->count();
+        $pelanggan = DB::table('pelanggan')->count();
+        $user = DB::table('users')->count();
+        return view('home', compact('transaksi', 'pelanggan', 'user'));
+
         $users = User::count();
 
         $widget = [

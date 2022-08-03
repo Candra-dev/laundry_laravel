@@ -30,7 +30,7 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
                             Transaksi</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $transaksi }}</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-clipboard fa-2x text-gray-300"></i>
@@ -48,7 +48,7 @@
                     <div class="col mr-2">
                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                             Pelanggan</div>
-                        <div class="h5 mb-0 font-weight-bold text-gray-800">0</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $pelanggan }}</div>
                     </div>
                     <div class="col-auto">
                         <i class="fas fa-user fa-2x text-gray-300"></i>
@@ -64,11 +64,11 @@
             <div class="card-body">
                 <div class="row no-gutters align-items-center">
                     <div class="col mr-2">
-                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Admin
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">User
                         </div>
                         <div class="row no-gutters align-items-center">
                             <div class="col-auto">
-                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">0</div>
+                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ $user }}</div>
                             </div>
                         </div>
                     </div>

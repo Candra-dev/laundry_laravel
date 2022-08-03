@@ -29,7 +29,7 @@
                         <td>{{ $produk->kategori }}</td>
                         <td>{{ $produk->berat }} kg</td>
                         <td>{{ $produk->hari }} hari</td>
-                        <td>Rp.{{ $produk->harga }}</td>
+                        <td>Rp.{{ number_format($produk->harga) }}</td>
                         <td>
                             <div class="d-flex">
                                 <a href="{{ route('kategori.edit', $produk->id) }}" class="btn btn-sm btn-primary mr-2">Edit</a>

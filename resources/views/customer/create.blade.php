@@ -20,17 +20,17 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="alamat">Alamat</label>
-                  <input type="text" class="form-control @error('alamat') is-invalid @enderror" name="alamat" id="alamat" placeholder="Alamat" autocomplete="off" value="{{ old('alamat') }}">
-                  @error('alamat')
+                  <label for="no_telp">Telpon</label>
+                  <input type="number" class="form-control @error('no_telp') is-invalid @enderror" name="no_telp" id="no_telp" placeholder="Telpon" autocomplete="off" value="{{ old('no_telp') }}">
+                  @error('no_telp')
                     <span class="text-danger">{{ $message }}</span>
                   @enderror
                 </div>
 
                 <div class="form-group">
-                  <label for="no_telp">Telpon</label>
-                  <input type="number" class="form-control @error('no_telp') is-invalid @enderror" name="no_telp" id="no_telp" placeholder="no_telp" autocomplete="off" value="{{ old('no_telp') }}">
-                  @error('no_telp')
+                  <label for="alamat">Alamat</label>
+                  <textarea type="text" rows="4" cols="70" class="form-control @error('alamat') is-invalid @enderror" name="alamat" id="alamat" placeholder="Alamat" autocomplete="off" value="{{ old('alamat') }}"></textarea>
+                  @error('alamat')
                     <span class="text-danger">{{ $message }}</span>
                   @enderror
                 </div>

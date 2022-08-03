@@ -1,5 +1,6 @@
 <?php
 
+use App\Transaksi;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,12 +27,9 @@ Route::get('/user', 'BasicController@index')->name('user');
 
 Route::get('/pelanggan', 'PelangganController@index')->name('pelanggan');
 
-
 Route::get('/produk', 'ProdukController@index')->name('produk');
 
-Route::get('/transaksi', function () {
-    return view('transaksi');
-})->name('transaksi');
+Route::get('/transaksi', 'TransaksiController@index')->name('transaksi');
 
 Route::get('/laporan', function () {
     return view('laporan');
@@ -47,4 +45,14 @@ Route::middleware('auth')->group(function() {
 
 Route::middleware('auth')->group(function() {
     Route::resource('kategori', ProdukController::class);
+});
+
+Route::middleware('auth')->group(function() {
+    Route::resource('transaction', TransaksiController::class);
+});
+
+Route::get('/insertdata-transaksi', function(Transaksi $transaksi){
+    $transaksi->create(['invoice_no' => '2333', 'date' => '02/04/22', 'tarif' => '2000']);
+
+    return 'insert data berhasil';
 });

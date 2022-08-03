@@ -19,8 +19,8 @@
                     <tr>
                         <th>No</th>
                         <th>Nama</th>
-                        <th>Alamat</th>
                         <th>Telpon</th>
+                        <th>Alamat</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
@@ -29,8 +29,8 @@
                     <tr>
                         <td scope="row">{{ $loop->iteration }}</td>
                         <td>{{ $pelanggan->nama }}</td>
-                        <td>{{ $pelanggan->alamat }}</td>
                         <td>{{ $pelanggan->no_telp }}</td>
+                        <td>{{ $pelanggan->alamat }}</td>
                         <td>
                             <div class="d-flex">
                                 <a href="{{ route('customer.edit', $pelanggan->id) }}" class="btn btn-sm btn-primary mr-2">Edit</a>
