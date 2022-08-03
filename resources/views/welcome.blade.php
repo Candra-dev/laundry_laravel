@@ -7,8 +7,6 @@
 
     <title>Laundry</title>
 
-    <link type="text/css" href="/css/sb-admin-2.css" rel="stylesheet">
-
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
@@ -157,8 +155,6 @@
             <a href="{{ url('/home') }}">Home</a>
             @else
             <a href="{{ route('login') }}">Login</a>
-
-            <a href="#">About</a>
 
             @endauth
         </div>

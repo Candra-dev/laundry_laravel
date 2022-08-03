@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LaporanCrontroller;
 use App\Transaksi;
 use Illuminate\Support\Facades\Route;
 
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -31,9 +32,7 @@ Route::get('/produk', 'ProdukController@index')->name('produk');
 
 Route::get('/transaksi', 'TransaksiController@index')->name('transaksi');
 
-Route::get('/laporan', function () {
-    return view('laporan');
-})->name('laporan');
+Route::get('/laporan', TransaksiController::class . '@show')->name('laporan');
 
 Route::middleware('auth')->group(function() {
     Route::resource('basic', BasicController::class);
@@ -49,10 +48,4 @@ Route::middleware('auth')->group(function() {
 
 Route::middleware('auth')->group(function() {
     Route::resource('transaction', TransaksiController::class);
-});
-
-Route::get('/insertdata-transaksi', function(Transaksi $transaksi){
-    $transaksi->create(['invoice_no' => '2333', 'date' => '02/04/22', 'tarif' => '2000']);
-
-    return 'insert data berhasil';
 });

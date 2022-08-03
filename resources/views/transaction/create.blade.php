@@ -46,8 +46,8 @@
 
                 <div class="form-group">
                   <label for="tarif">Berat</label>
-                  <input type="number" class="form-control @error('harga') is-invalid @enderror" name="tarif" id="tarif" placeholder="Berat" autocomplete="off" value="{{ old('Berat') }}">
-                  @error('harga')
+                  <input type="number" class="form-control @error('tarif') is-invalid @enderror" name="tarif" id="tarif" placeholder="Berat" autocomplete="off" value="{{ old('Berat') }}">
+                  @error('tarif')
                     <span class="text-danger">{{ $message }}</span>
                   @enderror
                 </div>

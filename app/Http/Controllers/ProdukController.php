@@ -20,6 +20,7 @@ class ProdukController extends Controller
             'title' => 'Produk',
             'produks' => Produk::paginate(10)
         ]);
+
     }
 
     /**

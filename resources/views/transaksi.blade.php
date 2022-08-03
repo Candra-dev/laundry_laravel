@@ -54,7 +54,6 @@
     <!-- End of Main Content -->
 @endsection
 
-
 @push('notif')
 @if (session('success'))
 <div class="alert alert-success border-left-success alert-dismissible fade show" role="alert">

@@ -25,7 +25,7 @@
                 </div>
 
                 <button type="submit" class="btn btn-primary">Save</button>
-                <a href="{{ route('kategori.index') }}" class="btn btn-default">Back to list</a>
+                <a href="{{ route('transaction.index') }}" class="btn btn-default">Back to list</a>
 
             </form>
         </div>

@@ -11,6 +11,8 @@ use App\Http\Requests\AddTransaksiRequest;
 use App\Http\Requests\EditTransaksiRequest;
 use Illuminate\Auth\Events\Validated;
 use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\App;
 
 class TransaksiController extends Controller
 {
@@ -23,8 +25,27 @@ class TransaksiController extends Controller
     {
         $transaksis = Transaksi::with('pelanggan')->get();
         $transaksis = Transaksi::with('produk')->get();
-    
+
         return view('transaksi', compact('transaksis'));
+    }
+
+    public function show()
+    {
+        $transaksis = Transaksi::with('pelanggan')->get();
+        $transaksis = Transaksi::with('produk')->get();
+
+        return view('laporan', compact('transaksis'));
+    }
+
+    public function loadpdf()
+    {
+        $transaksis = Transaksi::with('pelanggan')->get();
+        $transaksis = Transaksi::with('produk')->get();
+
+        $pdf = Pdf::loadView('laporan', compact('transaksis'));
+        return $pdf->stream();
+
+        set_time_limit(300);
     }
 
     /**
@@ -40,23 +61,18 @@ class TransaksiController extends Controller
         $produks = Produk::all();
 
         $voice = DB::table('transaksi')->select(DB::raw('MAX(RIGHT(invoice_no,3)) as kode'));
-        $kd="";
-        if($voice->count()>0)
-        {
-            foreach($voice->get() as $k)
-            {
-                $temp = ((int)$k->kode)+1;
+        $kd = "";
+        if ($voice->count() > 0) {
+            foreach ($voice->get() as $k) {
+                $temp = ((int)$k->kode) + 1;
                 $kd = sprintf("%04s", $temp);
             }
-        }
-        else
-        {
+        } else {
             $kd = "001";
         }
 
         //return "NBW.".$kd;
         return view('transaction.create', compact('pelanggans', 'produks', 'kd'));
-
     }
 
     /**
@@ -65,9 +81,8 @@ class TransaksiController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AddTransaksiRequest $request)
     {
-
         $transaksi = new Transaksi();
         $transaksi->invoice_no = $request->invoice_no;
         $transaksi->pelanggan_id = $request->pelanggan_id;
@@ -75,23 +90,23 @@ class TransaksiController extends Controller
         $transaksi->tarif = $request->tarif;
         $transaksi->date = $request->date;
         $transaksi->status = $request->status;
-        
+
         //$transaksi->status = Produk::where('id', $transaksi->id)->update(['harga' => DB::raw("harga * berat")]);
         //$transaksi->status = Produk::select(DB::raw('harga * $transaksi->tarif'))->get(); //
 
         //$transaksi->status = DB::table('hargas AS t')
-                    //->leftJoin('hargas AS h', 'p.hargas.id', '=', 't.id')
-                   // ->selectRaw('t.id AS "hargas.id", t.harga AS "status", SUM(harga * tarif)')->get();
+        //->leftJoin('hargas AS h', 'p.hargas.id', '=', 't.id')
+        // ->selectRaw('t.id AS "hargas.id", t.harga AS "status", SUM(harga * tarif)')->get();
 
         $transaksi->save();
 
-    //   Produk::create([
-      //  'invoice_no' => $request->invoice_no,
-      //  'pelanggan_id' => $request->pelanggan_id,
-      //  'hargas_id' => $request->hargas_id,
-      //  'tarif' => $request->tarif,
-       // 'status' => ('tarif * invoice_no'),
-    //]);
+        //   Produk::create([
+        //  'invoice_no' => $request->invoice_no,
+        //  'pelanggan_id' => $request->pelanggan_id,
+        //  'hargas_id' => $request->hargas_id,
+        //  'tarif' => $request->tarif,
+        // 'status' => ('tarif * invoice_no'),
+        //]);
 
         return redirect('transaction')->with('message', 'User added successfully!');
     }

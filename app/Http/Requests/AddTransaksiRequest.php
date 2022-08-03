@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Auth\Events\Validated;
 
 class AddTransaksiRequest extends FormRequest
 {
@@ -26,8 +27,8 @@ class AddTransaksiRequest extends FormRequest
         return [
             'pelanggan_id' => 'required',
             'hargas_id' => 'required',
-            'berat' => 'required',
-            'date' => 'required'
+            'tarif' => 'required',
+            'date' => 'required',
         ];
     }
 }
